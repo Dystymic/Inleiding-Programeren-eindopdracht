@@ -1,0 +1,52 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+.healthadjust{
+    padding-top: 10vh;
+    padding-left: 40vh;
+    display: block;
+}
+
+section{
+    text-align: center;
+    display: block;
+    padding-top: 10vh;
+}
+
+body{
+    background-image: url(img/Background.png);
+    background-position: center;
+    background-repeat: no-repeat;
+    height: 100vh;
+    width: auto;
+    color: white;
+}
+
+#health{
+    display: none;
+    position: fixed;
+}
+
+#kampvuur{
+    display: block;
+    position: fixed;
+}
+
+#javier {
+    margin-left: 27vh;
+}
+
+#plus {
+    margin-left: 2vh;
+}
+
+#slimes {
+    margin-left: 80vh;
+}
+
+#speler {
+    margin-left: 80vh;
+}
