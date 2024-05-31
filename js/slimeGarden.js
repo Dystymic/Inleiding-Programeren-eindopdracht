@@ -1,18 +1,18 @@
 /* START */
 
-let hintactive = false;
+let hintActive = false;
 let hint = document.querySelector("#hint");
 let hintStatus = false;
 hint.src = "img/Hint.png";
 
 /* (bron audio: https://www.youtube.com/watch?v=eibsYJlaNsg) */
-let hintaudio = new Audio("sounds/hintgeluid.mp3");
-let healthactive = false;
+let hintAudio = new Audio("sounds/hintgeluid.mp3");
+let healthActive = false;
 let kampvuur = document.querySelector("#kampvuur");
 let javier = document.querySelector("#javier");
 
 /* (bron audio: https://www.youtube.com/watch?v=i6PYS0SPwO4) */ 
-let kookaudio = new Audio("sounds/kookgeluid.mp3");
+let kookAudio = new Audio("sounds/kookgeluid.mp3");
 let kookStatus = false;
 let maag = Math.ceil(Math.random()* 5);
 
@@ -21,7 +21,7 @@ let muziek = new Audio("sounds/muziek.mp3");
 let muziekStatus = false;
 
 /* (bron audio: https://www.youtube.com/watch?v=RlvRyo4ofvM) */
-let voeraudio = new Audio("sounds/voergeluid.mp3");
+let voerAudio = new Audio("sounds/voergeluid.mp3");
 
 /* Array voor verschillende states (bron: If else opdracht) */
 let plaatjesHP = ['HP1.png', 'HP2.png', 'HP3.png', 'HP4.png', 'HP5.png', 'HP6.png'];
@@ -32,21 +32,21 @@ let vol = false;
 let buffActive = false;
 
 /* Constanten voor buttons */
-const Ignis = document.querySelector("#ignis");
+const ignis = document.querySelector("#ignis");
 const plusKnop = document.querySelector("#plus");
 const hintKnop = document.querySelector("#hint");
-const Kampvuur = document.querySelector("#kampvuur")
-const Boombox = document.querySelector("#muziek")
+const koken = document.querySelector("#kampvuur")
+const boombox = document.querySelector("#muziek")
 
 document.querySelector("img").src = 'img/'+HPafbeelding;
 
-Kampvuur.src = "img/Kampvuur.gif";
+koken.src = "img/Kampvuur.gif";
 
 /* HINT INTERACTIE MECHANISME (bron eigen research: https://gomakethings.com/how-to-play-a-sound-with-javascript/) */
 function Tutorial(){
-    hintaudio.play();
-    hintactive = !hintactive;
-    if(hintactive == true){
+    hintAudio.play();
+    hintActive = !hintactive;
+    if(hintActive == true){
         document.getElementById("speler").style.display = 'none';
         document.getElementById("slimes").style.display = 'none';
         document.getElementById("muziek").style.display = 'none';
@@ -73,8 +73,8 @@ if (hintStatus == true){
 
 /* SLIME INTERACTIE MECHANISME: Verbergt menu(s) achter slime (bron: Diego Ramon) */
 function InteractieSlime() {
-    healthactive = !healthactive;
-    if(healthactive == true){
+    healthActive = !healthActive;
+    if(healthActive == true){
         document.getElementById("health").style.display = 'block';
     } else {document.getElementById("health").style.display = 'none';}
 }
@@ -82,15 +82,15 @@ function InteractieSlime() {
 /* KOOK MECHANISME (bron: Lightbulb opdracht) */
 function Koken(){
     if (kookStatus == true){
-        Kampvuur.src = "img/Kampvuur.gif"
+        koken.src = "img/Kampvuur.gif"
         kookStatus = false
         document.getElementById("javier").style.display = 'block';
-        kookaudio.pause();
+        kookAudio.pause();
     } else {
-        Kampvuur.src = "img/Koken.gif"
+        koken.src = "img/Koken.gif"
         kookStatus = true
         document.getElementById("javier").style.display = 'none';
-        kookaudio.play();
+        kookAudio.play();
         setTimeout(function(){
             buffActive = true;
         }, 1000)
@@ -98,7 +98,7 @@ function Koken(){
 }
 
 if (kookStatus == true){
-    Kampvuur.src = "img/Koken.gif"
+    koken.src = "img/Koken.gif"
     kookStatus = false
     document.getElementById("javier").style.display = 'block';
 }
@@ -107,13 +107,13 @@ if (kookStatus == true){
 function meerVoeren(){
     if (buffActive == false){
         voer = voer + 1;
-        Ignis.src = "img/IgnisEten.gif"
-        voeraudio.play();
+        ignis.src = "img/IgnisEten.gif"
+        voerAudio.play();
         updateVoeding();
     } else if (buffActive == true){
         voer = voer + 2;
-        Ignis.src = "img/IgnisEten.gif"
-        voeraudio.play();
+        ignis.src = "img/IgnisEten.gif"
+        voerAudio.play();
         updateVoeding();
     }
 }
@@ -121,7 +121,7 @@ function meerVoeren(){
 function updateVoeding(){
     if (voer == 1){
         hp.src = "img/HP1.png"
-        Ignis.src = "img/IgnisMoe.png"
+        ignis.src = "img/IgnisMoe.png"
         vol = false
     } else if (voer == 2){
         hp.src = "img/HP2.png"
@@ -133,15 +133,15 @@ function updateVoeding(){
         hp.src = "img/HP5.png"
     } else if (voer == 6){
         hp.src = "img/HP6.png"
-        Ignis.src = "img/IgnisBlij.gif"
+        ignis.src = "img/IgnisBlij.gif"
         vol = true
     } else if (voer >= 7){
         hp.src = "img/HP6.png"
-        Ignis.src = "img/IgnisBlij.gif"
+        ignis.src = "img/IgnisBlij.gif"
         vol = true
     } else if (voer >= 8){
         hp.src = "img/HP6.png"
-        Ignis.src = "img/IgnisBlij.gif"
+        ignis.src = "img/IgnisBlij.gif"
         vol = true
     } if (voer >= 6){
         voer = 6;
@@ -151,12 +151,12 @@ function updateVoeding(){
 /* MUZIEK INTERACTIE MECHANISME */
 function Muziekdraaien(){
     if (muziekStatus == true){
-        Boombox.src = "img/Boombox.png"
+        boombox.src = "img/Boombox.png"
         document.getElementById("muziek").style.display = 'block';
         muziekStatus = false
         muziek.pause();
     } else {
-        Boombox.src = "img/BoomboxActive.gif"
+        boombox.src = "img/BoomboxActive.gif"
         document.getElementById("muziek").style.display = 'block';
         muziekStatus = true
         muziek.play();
@@ -164,7 +164,7 @@ function Muziekdraaien(){
 }
 
 if (muziekStatus == true){
-    Boombox.src = "img/Boombox.png"
+    boombox.src = "img/Boombox.png"
     document.getElementById("muziek").style.display = 'block';
     muziekStatus = false
 }
@@ -185,7 +185,7 @@ setInterval(function(){if (kookStatus == true){
 
 /* Events voor bruikbare knoppen */
 hintKnop.addEventListener('click', Tutorial)
-Ignis.addEventListener("click", InteractieSlime)
-Kampvuur.addEventListener('click', Koken)
+ignis.addEventListener("click", InteractieSlime)
+kampvuur.addEventListener('click', Koken)
 plusKnop.addEventListener('click', meerVoeren)
-Boombox.addEventListener('click', Muziekdraaien)
+boombox.addEventListener('click', Muziekdraaien)
