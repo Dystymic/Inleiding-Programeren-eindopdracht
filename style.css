@@ -44,11 +44,11 @@ body{
 }
 
 #javier{
-    margin-left: 34vh;
+    margin-left: 28vh;
 }
 
 #speler{
-    margin-left: 70vh;
+    margin-left: 75vh;
 }
 
 #slime{
@@ -72,6 +72,6 @@ body{
 #wensput{
     display: block;
     position: fixed;
-    margin-left: 145vh;
+    margin-left: 90vh;
     margin-top: 25vh;
 }

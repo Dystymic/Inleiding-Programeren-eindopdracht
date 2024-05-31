@@ -56,11 +56,13 @@ function Tutorial(){
         boombox.style.display = 'none';
         kampvuur.style.display = 'none';
         wegwijzer.style.display = 'none';
+        wensput.style.display = 'none';
     } else {javier.style.display = 'block';
             ignis.style.display = 'block';
             boombox.style.display = 'block';
             kampvuur.style.display = 'block';
             wegwijzer.style.display = 'block';
+            wensput.style.display = 'block';
     }
     if (hintStatus == true){
         hint.src = "img/Tutorial.png"
@@ -108,7 +110,7 @@ function Koken(){
 if (kookStatus == true){
     kampvuur.src = "img/Koken.gif"
     kookStatus = false
-    speler.style.display = 'block';
+    javier.style.display = 'block';
 }
 
 /* VOEDING MECHANISME (bron: Myster number opdracht) */
