@@ -197,14 +197,14 @@ function Wensen(){
         wensStatus = false
         javier.style.display = 'block';
     } else {
-        wensput.src = "img/wens.gif"
+        wensput.src = "img/Wens.gif"
         wensStatus = true
         javier.style.display = 'none';
     }
 }
 
 if (wensStatus == true){
-    wensput.src = "img/wens.gif"
+    wensput.src = "img/Wens.gif"
     wensStatus = false
     javier.style.display = 'block';
 }
