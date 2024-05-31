@@ -51,7 +51,7 @@ body{
     margin-left: 70vh;
 }
 
-#slimes{
+#slime{
     margin-left: 70vh;
 }
 
@@ -60,4 +60,18 @@ body{
     position: fixed;
     margin-left: 115vh;
     margin-top: 12vh;
+}
+
+#wegwijzer{
+    display: block;
+    position: fixed;
+    margin-left: 124vh;
+    margin-top: 20vh;
+}
+
+#wensput{
+    display: block;
+    position: fixed;
+    margin-left: 145vh;
+    margin-top: 25vh;
 }

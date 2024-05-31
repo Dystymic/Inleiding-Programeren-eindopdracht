@@ -1,58 +1,65 @@
 /* START */
-
-let hintActive = false;
-let hint = document.querySelector("#hint");
-let hintStatus = false;
-hint.src = "img/Hint.png";
-
-/* (bron audio: https://www.youtube.com/watch?v=eibsYJlaNsg) */
-let hintAudio = new Audio("sounds/hintgeluid.mp3");
-let healthActive = false;
-let kampvuur = document.querySelector("#kampvuur");
-let javier = document.querySelector("#javier");
-
-/* (bron audio: https://www.youtube.com/watch?v=i6PYS0SPwO4) */ 
-let kookAudio = new Audio("sounds/kookgeluid.mp3");
-let kookStatus = false;
-let maag = Math.ceil(Math.random()* 5);
-
-/* Achtergrondmuziek (bron: https://www.youtube.com/watch?v=XJsy5jJ7Dp0) */
-let muziek = new Audio("sounds/muziek.mp3");
-let muziekStatus = false;
-
-/* (bron audio: https://www.youtube.com/watch?v=RlvRyo4ofvM) */
-let voerAudio = new Audio("sounds/voergeluid.mp3");
-
-/* Array voor verschillende states (bron: If else opdracht) */
-let plaatjesHP = ['HP1.png', 'HP2.png', 'HP3.png', 'HP4.png', 'HP5.png', 'HP6.png'];
-let HPafbeelding = plaatjesHP[maag-1];
-
-let voer = maag;
-let vol = false;
-let buffActive = false;
-
 /* Constanten voor buttons */
 const ignis = document.querySelector("#ignis");
 const plusKnop = document.querySelector("#plus");
 const hintKnop = document.querySelector("#hint");
-const koken = document.querySelector("#kampvuur")
-const boombox = document.querySelector("#muziek")
+const kampvuur = document.querySelector("#kampvuur");
+const boombox = document.querySelector("#muziek");
+const health = document.querySelector("#health");
+const javier = document.querySelector("#javier");
+const hint = document.querySelector("#hint");
+const wegwijzer = document.querySelector("#wegwijzer");
+const wensput = document.querySelector("#wensput");
+/* (bron audio: https://www.youtube.com/watch?v=eibsYJlaNsg) */
+const hintAudio = new Audio("sounds/hintgeluid.mp3");
+
+/* (bron audio: https://www.youtube.com/watch?v=i6PYS0SPwO4) */ 
+const kookAudio = new Audio("sounds/kookgeluid.mp3");
+
+/* Achtergrondmuziek (bron: https://www.youtube.com/watch?v=XJsy5jJ7Dp0) */
+const muziek = new Audio("sounds/muziek.mp3");
+
+/* (bron audio: https://www.youtube.com/watch?v=RlvRyo4ofvM) */
+const voerAudio = new Audio("sounds/voergeluid.mp3");
+
+let hintActive = false;
+let hintStatus = false;
+let healthActive = false;
+let kookStatus = false;
+let maag = Math.ceil(Math.random()* 5);
+let muziekStatus = false;
+let kijkStatus = false;
+let wensStatus = false;
+
+/* Array voor verschillende states (bron: If else opdracht) */
+let plaatjesHP = ['HP1.png', 'HP2.png', 'HP3.png', 'HP4.png', 'HP5.png', 'HP6.png'];
+let HPafbeelding = plaatjesHP[maag-1];
+let voer = maag;
+let vol = false;
+let buffActive = false;
 
 document.querySelector("img").src = 'img/'+HPafbeelding;
 
-koken.src = "img/Kampvuur.gif";
+kampvuur.src = "img/Kampvuur.gif";
+hint.src = "img/Hint.png";
 
 /* HINT INTERACTIE MECHANISME (bron eigen research: https://gomakethings.com/how-to-play-a-sound-with-javascript/) */
 function Tutorial(){
     hintAudio.play();
-    hintActive = !hintactive;
+    hintActive = !hintActive;
     if(hintActive == true){
-        document.getElementById("speler").style.display = 'none';
-        document.getElementById("slimes").style.display = 'none';
-        document.getElementById("muziek").style.display = 'none';
-    } else {document.getElementById("speler").style.display = 'block';
-            document.getElementById("slimes").style.display = 'block';
-            document.getElementById("muziek").style.display = 'block';
+        javier.style.display = 'none';
+        ignis.style.display = 'none';
+        boombox.style.display = 'none';
+        kampvuur.style.display = 'none';
+        wegwijzer.style.display = 'none';
+        wensput.style.display = 'none';
+    } else {javier.style.display = 'block';
+            ignis.style.display = 'block';
+            boombox.style.display = 'block';
+            kampvuur.style.display = 'block';
+            wegwijzer.style.display = 'block';
+            wensput.style.display = 'block';
     }
     if (hintStatus == true){
         hint.src = "img/Tutorial.png"
@@ -75,21 +82,21 @@ if (hintStatus == true){
 function InteractieSlime() {
     healthActive = !healthActive;
     if(healthActive == true){
-        document.getElementById("health").style.display = 'block';
-    } else {document.getElementById("health").style.display = 'none';}
+        health.style.display = 'block';
+    } else {health.style.display = 'none';}
 }
 
 /* KOOK MECHANISME (bron: Lightbulb opdracht) */
 function Koken(){
     if (kookStatus == true){
-        koken.src = "img/Kampvuur.gif"
+        kampvuur.src = "img/Kampvuur.gif"
         kookStatus = false
-        document.getElementById("javier").style.display = 'block';
+        javier.style.display = 'block';
         kookAudio.pause();
     } else {
-        koken.src = "img/Koken.gif"
+        kampvuur.src = "img/Koken.gif"
         kookStatus = true
-        document.getElementById("javier").style.display = 'none';
+        javier.style.display = 'none';
         kookAudio.play();
         setTimeout(function(){
             buffActive = true;
@@ -98,24 +105,21 @@ function Koken(){
 }
 
 if (kookStatus == true){
-    koken.src = "img/Koken.gif"
+    kampvuur.src = "img/Koken.gif"
     kookStatus = false
-    document.getElementById("javier").style.display = 'block';
+    speler.style.display = 'block';
 }
 
 /* VOEDING MECHANISME (bron: Myster number opdracht) */
 function meerVoeren(){
     if (buffActive == false){
         voer = voer + 1;
-        ignis.src = "img/IgnisEten.gif"
-        voerAudio.play();
-        updateVoeding();
     } else if (buffActive == true){
         voer = voer + 2;
-        ignis.src = "img/IgnisEten.gif"
-        voerAudio.play();
-        updateVoeding();
     }
+    ignis.src = "img/IgnisEten.gif"
+    voerAudio.play();
+    updateVoeding();
 }
 
 function updateVoeding(){
@@ -152,12 +156,12 @@ function updateVoeding(){
 function Muziekdraaien(){
     if (muziekStatus == true){
         boombox.src = "img/Boombox.png"
-        document.getElementById("muziek").style.display = 'block';
+        boombox.style.display = 'block';
         muziekStatus = false
         muziek.pause();
     } else {
         boombox.src = "img/BoomboxActive.gif"
-        document.getElementById("muziek").style.display = 'block';
+        boombox.style.display = 'block';
         muziekStatus = true
         muziek.play();
     }
@@ -165,15 +169,51 @@ function Muziekdraaien(){
 
 if (muziekStatus == true){
     boombox.src = "img/Boombox.png"
-    document.getElementById("muziek").style.display = 'block';
+    boombox.style.display = 'block';
     muziekStatus = false
+}
+
+function Kijken(){
+    if (kijkStatus == true){
+        wegwijzer.src = "img/Wegwijzer.png"
+        kijkStatus = false
+        javier.style.display = 'block';
+    } else {
+        wegwijzer.src = "img/Kijken.png"
+        kijkStatus = true
+        javier.style.display = 'none';
+    }
+}
+
+if (kijkStatus == true){
+    wegwijzer.src = "img/Wijzen.png"
+    kijkStatus = false
+    javier.style.display = 'block';
+}
+
+function Wensen(){
+    if (wensStatus == true){
+        wensput.src = "img/Wensput.png"
+        wensStatus = false
+        javier.style.display = 'block';
+    } else {
+        wensput.src = "img/wens.gif"
+        wensStatus = true
+        javier.style.display = 'none';
+    }
+}
+
+if (wensStatus == true){
+    wensput.src = "img/wens.gif"
+    wensStatus = false
+    javier.style.display = 'block';
 }
 
 /* Als de slime vol zit zorgt deze functie ervoor dat hij weer honger krijgt (bron: Diego Ramon) */
 setInterval(function(){if (vol == true){
     voer--;
     updateVoeding();
-}}, 8000)
+}}, 5000)
 
 /* Timer voor de kookfunctie */
 setInterval(function(){if (kookStatus == true){
@@ -183,9 +223,21 @@ setInterval(function(){if (kookStatus == true){
     }, 10000)
 }}, 8000)
 
+/* Timer voor de interactie met de wegwijzer */
+setInterval(function(){if (kijkStatus == true){
+    Kijken();
+}}, 2000)
+
+/* Timer voor de interactie met de wensput */
+setInterval(function(){if (wensStatus == true){
+    Wensen();
+}}, 2000)
+
 /* Events voor bruikbare knoppen */
 hintKnop.addEventListener('click', Tutorial)
-ignis.addEventListener("click", InteractieSlime)
+ignis.addEventListener('click', InteractieSlime)
 kampvuur.addEventListener('click', Koken)
 plusKnop.addEventListener('click', meerVoeren)
 boombox.addEventListener('click', Muziekdraaien)
+wegwijzer.addEventListener('click', Kijken)
+wensput.addEventListener('click', Wensen)
