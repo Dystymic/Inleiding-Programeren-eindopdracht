@@ -4,18 +4,42 @@
     box-sizing: border-box;
 }
 
+/* HP */
 .healthadjust{
-    padding-top: 10vh;
-    padding-left: 40vh;
+    padding-top: 2vh;
+    padding-left: 20vh;
     display: block;
 }
 
+#health{
+    display: none;
+    position: fixed;
+}
+
+#plus{
+    margin-left: 2vh;
+}
+
+/* Boost */
+.buffs{
+    padding-top: 12vh;
+    padding-left: 20vh;
+    display: block;
+}
+
+#boost{
+    display: none;
+    position: fixed;
+}
+
+/* Hint */
 section{
     text-align: center;
     display: block;
-    padding-top: 10vh;
+    padding-top: 2vh;
 }
 
+/* Body */
 body{
     background-image: url(img/Background.png);
     background-position: center;
@@ -25,28 +49,27 @@ body{
     color: white;
 }
 
-#health{
-    display: none;
-    position: fixed;
-}
-
+/* Interacties */
 #kampvuur{
     display: block;
     position: fixed;
 }
 
-#javier {
-    margin-left: 27vh;
+#javier{
+    margin-left: 34vh;
 }
 
-#plus {
-    margin-left: 2vh;
+#speler{
+    margin-left: 70vh;
 }
 
-#slimes {
-    margin-left: 80vh;
+#slimes{
+    margin-left: 70vh;
 }
 
-#speler {
-    margin-left: 80vh;
+#muziek{
+    display: block;
+    position: fixed;
+    margin-left: 115vh;
+    margin-top: 12vh;
 }
