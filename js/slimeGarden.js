@@ -22,6 +22,9 @@ const muziek = new Audio("sounds/muziek.mp3");
 /* (bron audio: https://www.youtube.com/watch?v=RlvRyo4ofvM) */
 const voerAudio = new Audio("sounds/voergeluid.mp3");
 
+/* (bron audio: https://www.youtube.com/watch?v=_CM45vsCmxs) */
+const wensAudio = new Audio("sounds/wensgeluid.mp3");
+
 let hintActive = false;
 let hintStatus = false;
 let healthActive = false;
@@ -194,10 +197,12 @@ function Wensen(){
         wensput.src = "img/Wensput.png"
         wensStatus = false
         javier.style.display = 'block';
+        wensAudio.pause();
     } else {
         wensput.src = "img/Wens.gif"
         wensStatus = true
         javier.style.display = 'none';
+        wensAudio.play();
     }
 }
 
@@ -229,7 +234,7 @@ setInterval(function(){if (kijkStatus == true){
 /* Timer voor de interactie met de wensput */
 setInterval(function(){if (wensStatus == true){
     Wensen();
-}}, 2000)
+}}, 2800)
 
 /* Events voor bruikbare knoppen */
 hintKnop.addEventListener('click', Tutorial)
