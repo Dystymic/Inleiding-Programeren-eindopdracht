@@ -43,9 +43,6 @@ let buffActive = false;
 
 document.querySelector("img").src = 'img/'+HPafbeelding;
 
-kampvuur.src = "img/Kampvuur.gif";
-hint.src = "img/Hint.png";
-
 /* HINT INTERACTIE MECHANISME (bron eigen research: https://gomakethings.com/how-to-play-a-sound-with-javascript/) */
 function Tutorial(){
     hintAudio.play();
